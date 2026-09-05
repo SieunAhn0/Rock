@@ -8,10 +8,12 @@ public class Spawner : MonoBehaviour
     public float minX = -10f;
     public float maxX = 10f;
 
+    public float spawnrate = 1f;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        Invoke("Spawn", 1f);
+        Invoke("Spawn", spawnrate);
     }
 
     void Spawn() {
@@ -21,6 +23,6 @@ public class Spawner : MonoBehaviour
         Vector3 spawnPosition = new Vector3(randomX, transform.position.y, 0f);
 
         Instantiate(randomObject, spawnPosition, Quaternion.identity);
-        Invoke("Spawn", 1f);
+        Invoke("Spawn", spawnrate);
     }
 }

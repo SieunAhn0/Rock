@@ -1,7 +1,9 @@
 using UnityEngine;
 
-public class mover : MonoBehaviour
+public class Mover : MonoBehaviour
 {
+    [Header("Settings")]
+    public float movementSpeed = 2f;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -11,6 +13,6 @@ public class mover : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        transform.position += Vector3.down * movementSpeed * Time.deltaTime;
     }
 }

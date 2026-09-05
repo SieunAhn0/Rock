@@ -4,6 +4,10 @@ public class Spawner : MonoBehaviour
 {
     [Header("References")]
     public GameObject[] gameObjects;
+
+    public float minX = -10f;
+    public float maxX = 10f;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -12,7 +16,11 @@ public class Spawner : MonoBehaviour
 
     void Spawn() {
         GameObject randomObject = gameObjects[Random.Range(0, gameObjects.Length)];
-        Instantiate(randomObject, transform.position, Quaternion.identity);
-        Invoke("Spawn", 2f);
+
+        float randomX = Random.Range(minX, maxX);
+        Vector3 spawnPosition = new Vector3(randomX, transform.position.y, 0f);
+
+        Instantiate(randomObject, spawnPosition, Quaternion.identity);
+        Invoke("Spawn", 1f);
     }
 }
